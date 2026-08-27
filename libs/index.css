@@ -1,0 +1,598 @@
+/* ============================================================ CSS Variables ============================================================ */
+:root {
+    /* Colors - Grayscale */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-azure: azure;
+    --color-bg-body: #000000;
+    --color-text-primary: #ffffff;
+    --color-text-dark: #000000;
+    /* Colors - Accent */
+    --color-accent: #e83b98;
+    --color-accent-glow: rgba(232, 59, 152, 0.25);
+    --color-accent-bg: rgba(232, 59, 152, 1);
+    --color-accent-bg-subtle: rgba(232, 59, 152, 0.06);
+    /* Colors - Borders */
+    --color-border: rgba(255, 255, 255, 0.15);
+    --color-border-hover: rgba(255, 255, 255, 0.3);
+    --color-border-solid-dark: #000000;
+    /* Colors - Surfaces */
+    --color-surface-overlay: rgba(255, 255, 255, 0.06);
+    --color-surface-overlay-hover: rgba(255, 255, 255, 0.09);
+    --color-surface-overlay-active: rgba(255, 255, 255, 0.14);
+    --color-surface-overlay-press: rgba(255, 255, 255, 0.06);
+    --color-surface-panel: rgba(61, 61, 61, 0.25);
+    --color-surface-box: rgba(255, 255, 255, 0.18);
+    --color-surface-menu: #efefef;
+    --color-surface-menu-hover: #ffffff;
+    --color-surface-loading: #ffffff;
+    --color-surface-toast-shadow: rgba(84, 84, 84, 0.5);
+    --color-surface-file-input: #ffffff;
+    /* Colors - Semi-transparent */
+    --color-overlay-dark: rgba(0, 0, 0, 0.5);
+    --color-overlay-darker: rgba(0, 0, 0, 0.5);
+    --color-overlay-badge: rgba(0, 0, 0, 0.5);
+    --color-shadow-menu: rgba(41, 41, 41, 0.5);
+    /* Colors - Specific */
+    --color-row-even: #ebebed;
+    --color-scrollbar-thumb: #636363;
+    --color-scrollbar-track: transparent;
+    /* Border Radius */
+    --radius-xs: 0.2rem;
+    --radius-sm: 0.4rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.6rem;
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease-in-out;
+    /* Typography */
+    --font-family-base: "MiSans", "Microsoft Yahei", "PingFang SC", Tahoma, Arial, Helvetica, Sans-Serif;
+    --font-size-base: max(1.6vmin, 16px);
+    --font-weight-light: 300;
+    --font-weight-semibold: 600;
+    --font-weight-bold: bold;
+    --font-weight-bolder: bolder;
+}
+
+/* ============================================================
+Reset & Base
+============================================================ */
+html,
+body,
+textarea,
+input,
+button,
+select,
+td,
+th {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-light);
+    font-family: var(--font-family-base);
+}
+
+a,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--color-bg-body);
+    color: var(--color-text-primary);
+}
+
+body,
+.view {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ============================================================
+Utility Classes
+============================================================ */
+.unify {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    background: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+.unselect {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+/* ============================================================
+Layout - Grid
+============================================================ */
+.grid-horizontal {
+    display: grid !important;
+    padding: 0;
+    grid-auto-flow: row;
+}
+
+.grid-vertical {
+    display: grid !important;
+    padding: 0;
+    grid-auto-flow: column;
+}
+
+/* ============================================================
+Layout - Flex
+============================================================ */
+.flex-horizontal {
+    display: flex !important;
+    padding: 0;
+    flex-direction: row;
+}
+
+.flex-vertical {
+    display: flex !important;
+    padding: 0;
+    flex-direction: column;
+}
+
+.fc,
+.flex-horizontal>.fill,
+.flex-vertical>.fill {
+    position: relative;
+    flex-grow: 1;
+    min-width: 0;
+    min-height: 0;
+}
+
+.info .fc {
+    height: 100%;
+    margin: 0;
+}
+
+/* ============================================================
+Layout - Scroll
+============================================================ */
+.view.scroll-v {
+    overflow: hidden scroll;
+}
+
+ul.fc.scroll li {
+    background: var(--color-azure);
+}
+
+ul.fc.scroll li:nth-child(even) {
+    background: var(--color-row-even);
+}
+
+.scroll-content {
+    padding: 10px;
+}
+
+/* ============================================================
+Scrollbar
+============================================================ */
+::-webkit-scrollbar {
+    background-color: var(--color-scrollbar-track);
+    width: 0.2rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb);
+    border-radius: var(--radius-md);
+}
+
+/* ============================================================
+Loading
+============================================================ */
+#web-loading {
+    position: fixed;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-surface-loading);
+}
+
+/* ============================================================
+Action Panel
+============================================================ */
+.action {
+    background-color: var(--color-surface-panel);
+    position: relative;
+    width: 30%;
+    min-height: 100%;
+    min-width: 400px;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    align-content: start;
+    justify-content: center;
+    justify-items: center;
+    grid-gap: 10px;
+}
+
+.action>.action {
+    width: 100%;
+}
+
+/* ============================================================
+Box
+============================================================ */
+.action .box {
+    position: relative;
+    background-color: var(--color-surface-box);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    width: calc(100% - 2rem);
+    padding: 0.5rem;
+}
+
+.box>.box-title {
+    font-weight: var(--font-weight-bold);
+}
+
+.box .item {
+    margin: 5px 0;
+}
+
+.box .item>.item-title {
+    height: 2rem;
+    padding: 0.4rem 0;
+    place-items: center;
+}
+
+.box .item>.item-title>button {
+    margin: auto 0 auto 5px;
+}
+
+.item-title> :first-child {
+    flex: 1;
+    font-weight: var(--font-weight-bolder);
+}
+
+/* ============================================================
+File Grid
+============================================================ */
+#file-grid {
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    place-content: start space-evenly;
+    padding: 5px;
+}
+
+/* ============================================================
+File Grid Context Menu
+============================================================ */
+#file-grid-menu {
+    position: fixed;
+    width: auto;
+    height: auto;
+    max-height: 60%;
+    line-height: 1.8rem;
+    top: 10px;
+    left: 10px;
+    color: var(--color-text-primary);
+    cursor: default;
+    background-color: #1b1b1f;
+    margin: 0;
+    padding: 2px;
+    border-radius: 0;
+    border: 1px solid var(--color-border-solid-dark);
+    box-shadow: 1px 1px 3px 2px var(--color-shadow-menu);
+}
+
+#file-grid-menu>div {
+    border: none;
+}
+
+#file-grid-menu>div>div {
+    padding: 0 1rem;
+}
+
+#file-grid-menu>div>div:hover {
+    background-color: var(--color-accent-bg);
+}
+
+/* ============================================================
+Preview Card
+============================================================ */
+.preview {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    user-select: none;
+    box-sizing: border-box;
+    border: 5px solid #00000000;
+}
+
+.preview:hover {
+    border: 5px solid var(--color-accent-bg);
+}
+
+.preview::after {
+    content: attr(data-type);
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 2px 5px;
+    background-color: var(--color-overlay-badge);
+}
+
+.preview>.preview-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.preview>.preview-content>img {
+    width: 100%;
+    height: 100%;
+}
+
+.preview>.preview-content>div.title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-overlay-dark);
+}
+
+.preview div.c {
+    opacity: 0;
+}
+
+.preview.selected div.c {
+    opacity: 1;
+    place-content: center;
+    place-items: center;
+    font-size: 4rem;
+    background-color: var(--color-overlay-darker);
+}
+
+.preview:not(.scene)>div>img {
+    filter: grayscale(100%);
+}
+
+/* ============================================================
+Table
+============================================================ */
+table.version-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    line-height: 2;
+}
+
+table.version-table th {
+    text-align: start;
+    font-weight: var(--font-weight-bold);
+}
+
+table.version-table th,
+table.version-table td {
+    border: 1px solid var(--color-border);
+    border-width: 1px 0;
+    font-size: 0.8rem;
+}
+
+/* ============================================================
+Custom File Input
+============================================================ */
+.custom-file-input {
+    position: relative;
+}
+
+.custom-file-input>span {
+    position: absolute;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    background-color: var(--color-surface-file-input);
+    color: var(--color-text-dark);
+}
+
+/* ============================================================
+Toast
+============================================================ */
+div.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 10%;
+    transform: translate(-50%, 0);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    background-color: var(--color-accent-bg);
+    box-shadow: 1px 1px 3px 2px var(--color-surface-toast-shadow);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+}
+
+div.toast.show {
+    opacity: 1;
+}
+
+/* ============================================================
+Form Controls
+============================================================ */
+input[type="text"],
+select {
+    width: 100%;
+    height: 34px;
+    padding: 0 12px;
+    font-size: 0.85em;
+    color: var(--color-text-primary);
+    background: var(--color-surface-overlay);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+input[type="text"]:hover,
+select:hover {
+    background: var(--color-surface-overlay-hover);
+    border-color: var(--color-border-hover);
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--color-accent);
+    background: var(--color-accent-bg-subtle);
+    box-shadow: 0 0 0 2px var(--color-accent-glow);
+}
+
+select option {
+    color: var(--color-text-primary);
+    background: var(--color-bg-body);
+}
+
+/* ============================================================
+Buttons
+============================================================ */
+button {
+    height: 30px;
+    padding: 0 14px;
+    font-size: 0.78em;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    background: var(--color-surface-overlay);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+}
+
+button:hover {
+    background: var(--color-surface-overlay-active);
+    border-color: var(--color-border-hover);
+}
+
+button:active {
+    transform: scale(0.97);
+    background: var(--color-surface-overlay-press);
+}
+
+
+
+/* ============================================================ 
+   Dark Grey-Blue Theme Variables 
+   ============================================================ */
+:root {
+    /* Colors - Grayscale (Blue-Grey Tint) */
+    --color-white: #e2e8f0;
+    --color-black: #0f172a;
+    --color-azure: #2e99c7;
+    --color-bg-body: #0f172a;
+    /* 深邃的蓝灰背景 */
+    --color-text-primary: #e2e8f0;
+    /* 柔和的灰白文字 */
+    --color-text-dark: #0f172a;
+
+    /* Colors - Accent (Muted Teal/Blue) */
+    --color-accent: #247a9f;
+    /* 天蓝色点缀 */
+    --color-accent-glow: rgba(56, 189, 248, 0.25);
+    --color-accent-bg: rgba(35, 122, 159, 0.9);
+    --color-accent-bg-subtle: rgba(56, 189, 248, 0.08);
+
+    /* Colors - Borders */
+    --color-border: rgba(148, 163, 184, 0.15);
+    --color-border-hover: rgba(148, 163, 184, 0.3);
+    --color-border-solid-dark: #1e293b;
+
+    /* Colors - Surfaces (Layered Blue-Greys) */
+    --color-surface-overlay: rgba(30, 41, 59, 0.6);
+    --color-surface-overlay-hover: rgba(30, 41, 59, 0.8);
+    --color-surface-overlay-active: rgba(30, 41, 59, 0.95);
+    --color-surface-overlay-press: rgba(15, 23, 42, 0.8);
+    --color-surface-panel: rgba(15, 23, 42, 0.6);
+    --color-surface-box: rgba(30, 41, 59, 0.5);
+    --color-surface-menu: #1e293b;
+    --color-surface-menu-hover: #334155;
+    --color-surface-loading: #0f172a;
+    --color-surface-toast-shadow: rgba(0, 0, 0, 0.4);
+    --color-surface-file-input: #334155;
+
+    /* Colors - Semi-transparent & Specific */
+    --color-overlay-dark: rgba(15, 23, 42, 0.7);
+    --color-overlay-darker: rgba(15, 23, 42, 0.85);
+    --color-overlay-badge: rgba(15, 23, 42, 0.8);
+    --color-shadow-menu: rgba(0, 0, 0, 0.5);
+    --color-row-even: #1e293b;
+    --color-scrollbar-thumb: #475569;
+    --color-scrollbar-track: transparent;
+}
+
+/* ============================================================
+   Component Overrides for Dark Theme Consistency
+   ============================================================ */
+
+/* 预览卡片类型标签在深色背景下需要更清晰的对比度 */
+.preview::after {
+    color: var(--color-white);
+    font-size: 0.7rem;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    border-radius: var(--radius-xs);
+}
+
+/* 右键菜单深色适配 */
+#file-grid-menu {
+    background-color: var(--color-surface-menu);
+    border-color: var(--color-border);
+    box-shadow: 0 4px 12px var(--color-shadow-menu);
+}
+
+#file-grid-menu>div>div:hover {
+    background-color: var(--color-accent-bg-subtle);
+    color: var(--color-accent);
+}
+
+/* 版本表格行交替色微调 */
+table.version-table tr:nth-child(even) td {
+    background-color: rgba(30, 41, 59, 0.3);
+}
+
+/* 选中状态的对勾图标颜色确保可见 */
+.preview.selected div.c {
+    color: var(--color-accent);
+    text-shadow: 0 0 10px var(--color-accent-glow);
+}
+
+/* 非场景类型壁纸的灰度滤镜在深色模式下增加一点亮度补偿 */
+.preview:not(.scene)>div>img {
+    filter: grayscale(100%) brightness(0.7);
+}
+
+/* Toast 提示框深色模式优化 */
+div.toast {
+    background-color: var(--color-accent-bg);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+}
