@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wallpaper engine</title>
+    <link rel="stylesheet" href="libs/index.css" />
+</head>
+
+<body class="view">
+    <div id="app" class="view flex-horizontal">
+        <div class="fill">
+            <div class="view scroll-v">
+                <div id="file-grid" class="grid-horizontal">
+                    <div class="preview hide">
+                        <div class="preview-content">
+                            <img alt="preview" draggable="false" src="" />
+                            <div class="title"></div>
+                            <div class="view flex-horizontal c">✔</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view action scroll-v">
+            <div class="grid-horizontal action scroll-content">
+                <div id="dirs" class="box">
+                    <!-- 修改行：为“目录”标题添加本地化属性 -->
+                    <div class="box-title" data-i18n="ui_dirs">目录</div>
+                    <div class="box-content">
+                        <div class="item flex-vertical hide">
+                            <div class="item-title flex-horizontal">
+                                <span>创意工坊目录</span>
+                                <button type="button">搜索</button>
+                            </div>
+                            <div class="item-content flex-horizontal">
+                                <input class="fill" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-title">
+                        <!-- 修改行：为“应用程序”标题添加本地化属性 -->
+                        <span data-i18n="ui_applications">应用程序</span>
+                    </div>
+                    <div class="box-content">
+                        <div class="item flex-vertical">
+                            <div class="item-title flex-horizontal">
+                                <!-- 修改行：为“语言（Language）”标签添加本地化属性 -->
+                                <span data-i18n="ui_language">语言（Language）</span>
+                            </div>
+                            <div class="item-content flex-horizontal">
+                                <select id="language" class="fill"></select>
+                            </div>
+                        </div>
+                        <div id="version" class="item flex-vertical">
+                            <div class="item-title flex-horizontal">
+                                <span data-i18n="version_title">版本</span>
+                                <button type="button" name="version_open_in_explorer"
+                                    data-i18n="version_open_in_explorer">打开程序文件夹</button>
+                                <button type="button" name="version_check_for_updates"
+                                    data-i18n="version_check_for_updates">检查更新</button>
+                            </div>
+                            <div class="item-content flex-horizontal">
+                                <table class="version-table">
+                                    <thead>
+                                        <tr>
+                                            <!-- 修改行：为表格的三个表头添加本地化属性 -->
+                                            <th data-i18n="table_header_item">项目</th>
+                                            <th data-i18n="table_header_current_version">当前版本</th>
+                                            <th data-i18n="table_header_latest_version">最新版本</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="hide">
+                                            <td>RePKG</td>
+                                            <td></td>
+                                            <td data-i18n="version_update_not_checked">未检查版本更新</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <a href="chat/index.html">游戏入口</a>
+                </div>
+            </div>
+        </div>
+        <menu id="file-grid-menu" class="flex-vertical hide">
+            <div>
+                <div class="text">在资源管理器中打开</div>
+                <hr class="hide">
+            </div>
+        </menu>
+    </div>
+    <script src="libs/puset-3.0.0.js"></script>
+    <script src="libs/index.js"></script>
+</body>
+
+</html>
